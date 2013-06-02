@@ -11,6 +11,7 @@
 #import "HelloWorldLayer.h"
 #import "GameOverLayer.h"
 #import "Monster.h"
+#import "LevelManager.h"
 
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
@@ -78,12 +79,12 @@
 {
 	// always call "super" init
     // Apple recommends to re-assign "self" with the "super's" return value
-	if( (self=[super initWithColor:ccc4(255, 255, 255, 255)]) ) {
+	if( (self=[super initWithColor:[LevelManager sharedInstance].curLevel.backgroundColor])) {
         CGSize winSize = [CCDirector sharedDirector].winSize;
         _player = [CCSprite spriteWithFile:@"player2.png"];
         _player.position = ccp(_player.contentSize.width/2, winSize.height/2);
         [self addChild:_player];
-        [self schedule:@selector(gameLogic:) interval:1.0];
+        [self schedule:@selector(gameLogic:) interval:[LevelManager sharedInstance].curLevel.secsPerSpawn];
         [self schedule:@selector(update:)];
         _monsters = [[NSMutableArray alloc] init];
         _projectiles = [[NSMutableArray alloc] init];

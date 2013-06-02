@@ -8,6 +8,7 @@
 
 #import "GameOverLayer.h"
 #import "HelloWorldLayer.h"
+#import "LevelManager.h"
 
 
 @implementation GameOverLayer
@@ -22,10 +23,19 @@
 - (id) initWithWon:(BOOL)won {
     if ((self = [super initWithColor:ccc4(255, 255, 255, 255)])) {
         NSString *message;
-        if (won)
-            message = @"You won!";
-        else
+        if (won) {
+            [[LevelManager sharedInstance] nextLevel];
+            Level *curLevel = [[LevelManager sharedInstance] curLevel];
+            if (curLevel)
+                message = [NSString stringWithFormat:@"Get ready for level %d!", curLevel.levelNum];
+            else {
+                message = @"You won!";
+                [[LevelManager sharedInstance] reset];
+            }
+        } else {
             message = @"You lose ;[";
+            [[LevelManager sharedInstance] reset];
+        }
         
         CGSize winSize = [[CCDirector sharedDirector] winSize];
         CCLabelTTF *label = [CCLabelTTF labelWithString:message fontName:@"Helvetica" fontSize:32];
