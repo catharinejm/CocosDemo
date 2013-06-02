@@ -126,7 +126,11 @@
     
     CGPoint offset = ccpSub(location, _nextProjectile.position);
     
-    if (offset.x <= 0) return;
+    if (offset.x <= 0) {
+        [_nextProjectile release];
+        _nextProjectile = nil;
+        return;
+    }
     
     int realX = winSize.width + (_nextProjectile.contentSize.width/2);
     float ratio = (float) offset.y / (float) offset.x;
