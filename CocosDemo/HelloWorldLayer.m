@@ -34,6 +34,30 @@
 	return scene;
 }
 
+-(void) addMonster {
+    CCSprite *monster = [CCSprite spriteWithFile:@"monster.png"];
+    
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    int minY = monster.contentSize.height/2;
+    int maxY = winSize.height - monster.contentSize.height/2;
+    int rangeY = maxY - minY;
+    int actualY = (arc4random() % rangeY) + minY;
+    
+    monster.position = ccp(winSize.width + monster.contentSize.width/2, actualY);
+    [self addChild:monster];
+    
+    int minDuration = 2.0;
+    int maxDuration = 4.0;
+    int rangeDuration = maxDuration - minDuration;
+    int actualDuration = (arc4random() % rangeDuration) + minDuration;
+    
+    CCMoveTo *actionMove = [CCMoveTo actionWithDuration:actualDuration position:ccp(-monster.contentSize.width/2, actualY)];
+    CCCallBlockN *actionMoveDone = [CCCallBlockN actionWithBlock:^(CCNode *node) {
+        [node removeFromParentAndCleanup:YES];
+    }];
+    [monster runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
+}
+
 // on "init" you need to initialize your instance
 -(id) init
 {
@@ -44,8 +68,13 @@
         CCSprite *player = [CCSprite spriteWithFile:@"player.png"];
         player.position = ccp(player.contentSize.width/2, winSize.height/2);
         [self addChild:player];
+        [self schedule:@selector(gameLogic:) interval:1.0];
 	}
 	return self;
+}
+
+-(void) gameLogic: (ccTime)dt {
+    [self addMonster];
 }
 
 // on "dealloc" you need to release all your retained objects
