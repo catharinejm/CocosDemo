@@ -149,6 +149,9 @@
 		FC9E2F6A175BEA7A00D90DBF /* player2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC9E2F66175BEA7A00D90DBF /* player2.png */; };
 		FC9E2F6B175BEA7A00D90DBF /* projectile2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = FC9E2F67175BEA7A00D90DBF /* projectile2-hd.png */; };
 		FC9E2F6C175BEA7A00D90DBF /* projectile2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC9E2F68175BEA7A00D90DBF /* projectile2.png */; };
+		FCD7E848175BF4080034FAC9 /* Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD7E847175BF4080034FAC9 /* Monster.m */; };
+		FCD7E84B175BF6410034FAC9 /* monster2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD7E849175BF6410034FAC9 /* monster2-hd.png */; };
+		FCD7E84C175BF6410034FAC9 /* monster2.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD7E84A175BF6410034FAC9 /* monster2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -441,6 +444,11 @@
 		FC9E2F66175BEA7A00D90DBF /* player2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player2.png; sourceTree = "<group>"; };
 		FC9E2F67175BEA7A00D90DBF /* projectile2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "projectile2-hd.png"; sourceTree = "<group>"; };
 		FC9E2F68175BEA7A00D90DBF /* projectile2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectile2.png; sourceTree = "<group>"; };
+		FCD7E846175BF4080034FAC9 /* Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Monster.h; sourceTree = "<group>"; };
+		FCD7E847175BF4080034FAC9 /* Monster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Monster.m; sourceTree = "<group>"; };
+		FCD7E849175BF6410034FAC9 /* monster2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "monster2-hd.png"; sourceTree = "<group>"; };
+		FCD7E84A175BF6410034FAC9 /* monster2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster2.png; sourceTree = "<group>"; };
+		FCD7E84D175BF64A0034FAC9 /* explosion.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosion.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -505,6 +513,8 @@
 				FC649BD7175B936B009B5AD1 /* AppDelegate.m */,
 				FC649BD9175B936B009B5AD1 /* HelloWorldLayer.h */,
 				FC649BDA175B936B009B5AD1 /* HelloWorldLayer.m */,
+				FCD7E846175BF4080034FAC9 /* Monster.h */,
+				FCD7E847175BF4080034FAC9 /* Monster.m */,
 				FC649BDC175B936B009B5AD1 /* IntroLayer.h */,
 				FC649BDD175B936B009B5AD1 /* IntroLayer.m */,
 				FC9E2F62175BD21300D90DBF /* GameOverLayer.h */,
@@ -900,6 +910,8 @@
 		FC9E2F50175BC46800D90DBF /* Art */ = {
 			isa = PBXGroup;
 			children = (
+				FCD7E849175BF6410034FAC9 /* monster2-hd.png */,
+				FCD7E84A175BF6410034FAC9 /* monster2.png */,
 				FC9E2F65175BEA7A00D90DBF /* player2-hd.png */,
 				FC9E2F66175BEA7A00D90DBF /* player2.png */,
 				FC9E2F67175BEA7A00D90DBF /* projectile2-hd.png */,
@@ -913,6 +925,7 @@
 		FC9E2F57175BC46800D90DBF /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				FCD7E84D175BF64A0034FAC9 /* explosion.caf */,
 				FC9E2F58175BC46800D90DBF /* background-music-aac.caf */,
 				FC9E2F59175BC46800D90DBF /* pew-pew-lei.caf */,
 			);
@@ -990,6 +1003,8 @@
 				FC9E2F6A175BEA7A00D90DBF /* player2.png in Resources */,
 				FC9E2F6B175BEA7A00D90DBF /* projectile2-hd.png in Resources */,
 				FC9E2F6C175BEA7A00D90DBF /* projectile2.png in Resources */,
+				FCD7E84B175BF6410034FAC9 /* monster2-hd.png in Resources */,
+				FCD7E84C175BF6410034FAC9 /* monster2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1112,6 +1127,7 @@
 				FC649BDB175B936B009B5AD1 /* HelloWorldLayer.m in Sources */,
 				FC649BDE175B936B009B5AD1 /* IntroLayer.m in Sources */,
 				FC9E2F64175BD21300D90DBF /* GameOverLayer.m in Sources */,
+				FCD7E848175BF4080034FAC9 /* Monster.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
