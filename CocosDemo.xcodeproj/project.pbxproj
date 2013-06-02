@@ -141,6 +141,12 @@
 		FC649BDB175B936B009B5AD1 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FC649BDA175B936B009B5AD1 /* HelloWorldLayer.m */; };
 		FC649BDE175B936B009B5AD1 /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FC649BDD175B936B009B5AD1 /* IntroLayer.m */; };
 		FC649BE7175B97C5009B5AD1 /* seeker.png in Resources */ = {isa = PBXBuildFile; fileRef = FC649BE6175B97C5009B5AD1 /* seeker.png */; };
+		FCF50A17175BB2FF009E79DB /* myfirstbutton_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF50A11175BB2FF009E79DB /* myfirstbutton_selected.png */; };
+		FCF50A18175BB2FF009E79DB /* myfirstbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF50A12175BB2FF009E79DB /* myfirstbutton.png */; };
+		FCF50A19175BB2FF009E79DB /* mysecondbutton_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF50A13175BB2FF009E79DB /* mysecondbutton_selected.png */; };
+		FCF50A1A175BB2FF009E79DB /* mysecondbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF50A14175BB2FF009E79DB /* mysecondbutton.png */; };
+		FCF50A1B175BB2FF009E79DB /* mythirdbutton_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF50A15175BB2FF009E79DB /* mythirdbutton_selected.png */; };
+		FCF50A1C175BB2FF009E79DB /* mythirdbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF50A16175BB2FF009E79DB /* mythirdbutton.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -424,6 +430,12 @@
 		FC649BDC175B936B009B5AD1 /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		FC649BDD175B936B009B5AD1 /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		FC649BE6175B97C5009B5AD1 /* seeker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seeker.png; path = Resources/seeker.png; sourceTree = "<group>"; };
+		FCF50A11175BB2FF009E79DB /* myfirstbutton_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = myfirstbutton_selected.png; path = Resources/myfirstbutton_selected.png; sourceTree = "<group>"; };
+		FCF50A12175BB2FF009E79DB /* myfirstbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = myfirstbutton.png; path = Resources/myfirstbutton.png; sourceTree = "<group>"; };
+		FCF50A13175BB2FF009E79DB /* mysecondbutton_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mysecondbutton_selected.png; path = Resources/mysecondbutton_selected.png; sourceTree = "<group>"; };
+		FCF50A14175BB2FF009E79DB /* mysecondbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mysecondbutton.png; path = Resources/mysecondbutton.png; sourceTree = "<group>"; };
+		FCF50A15175BB2FF009E79DB /* mythirdbutton_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mythirdbutton_selected.png; path = Resources/mythirdbutton_selected.png; sourceTree = "<group>"; };
+		FCF50A16175BB2FF009E79DB /* mythirdbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mythirdbutton.png; path = Resources/mythirdbutton.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -500,6 +512,12 @@
 		FC649A49175B9369009B5AD1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FCF50A11175BB2FF009E79DB /* myfirstbutton_selected.png */,
+				FCF50A12175BB2FF009E79DB /* myfirstbutton.png */,
+				FCF50A13175BB2FF009E79DB /* mysecondbutton_selected.png */,
+				FCF50A14175BB2FF009E79DB /* mysecondbutton.png */,
+				FCF50A15175BB2FF009E79DB /* mythirdbutton_selected.png */,
+				FCF50A16175BB2FF009E79DB /* mythirdbutton.png */,
 				FC649BE6175B97C5009B5AD1 /* seeker.png */,
 				FC649A4A175B9369009B5AD1 /* Default.png */,
 				FC649A4C175B9369009B5AD1 /* Default@2x.png */,
@@ -941,6 +959,12 @@
 				FC649A60175B9369009B5AD1 /* iTunesArtwork in Resources */,
 				FC649BB6175B936B009B5AD1 /* ChangeLog in Resources */,
 				FC649BE7175B97C5009B5AD1 /* seeker.png in Resources */,
+				FCF50A17175BB2FF009E79DB /* myfirstbutton_selected.png in Resources */,
+				FCF50A18175BB2FF009E79DB /* myfirstbutton.png in Resources */,
+				FCF50A19175BB2FF009E79DB /* mysecondbutton_selected.png in Resources */,
+				FCF50A1A175BB2FF009E79DB /* mysecondbutton.png in Resources */,
+				FCF50A1B175BB2FF009E79DB /* mythirdbutton_selected.png in Resources */,
+				FCF50A1C175BB2FF009E79DB /* mythirdbutton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1167,6 +1191,7 @@
 				FC649BE3175B936B009B5AD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

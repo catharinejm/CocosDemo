@@ -40,6 +40,30 @@ CCSprite *cocosGuy;
 	return scene;
 }
 
+-(void) setUpMenus {
+    
+    CCMenuItemImage *menuItem1 = [CCMenuItemImage itemWithNormalImage:@"myfirstbutton.png"
+                                                        selectedImage:@"myfirstbutton_selected.png"
+                                                               target:self
+                                                             selector:@selector(doSomethingOne:)];
+    CCMenuItemImage *menuItem2 = [CCMenuItemImage itemWithNormalImage:@"mysecondbutton.png"
+                                                        selectedImage:@"mysecondbutton_selected.png"
+                                                               target:self
+                                                             selector:@selector(doSomethingTwo:)];
+    CCMenuItemImage *menuItem3 = [CCMenuItemImage itemWithNormalImage:@"mythirdbutton.png"
+                                                        selectedImage:@"mythirdbutton_selected.png"
+                                                               target:self
+                                                             selector:@selector(doSomethingThree:)];
+    
+    
+    
+    CCMenu *myMenu = [CCMenu menuWithItems: menuItem1, menuItem2, menuItem3, nil];
+    
+    [myMenu alignItemsVertically];
+    
+    [self addChild:myMenu];
+}
+
 // on "init" you need to initialize your instance
 -(id) init
 {
@@ -56,6 +80,7 @@ CCSprite *cocosGuy;
         
         // schedule a repeating callback on every frame
         [self schedule:@selector(nextFrame:)];
+        [self setUpMenus];
 	}
 	return self;
 }
@@ -64,15 +89,6 @@ CCSprite *cocosGuy;
     [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
 }
 
--(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    return YES;
-}
-
--(void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
-    CGPoint location = [self convertTouchToNodeSpace: touch];
-    [cocosGuy stopAllActions];
-    [cocosGuy runAction: [CCMoveTo actionWithDuration:1 position:location]];
-}
 
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
@@ -85,12 +101,36 @@ CCSprite *cocosGuy;
 	[super dealloc];
 }
 
+-(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+    return YES;
+}
+
+-(void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+    CGPoint location = [self convertTouchToNodeSpace: touch];
+    [cocosGuy stopAllActions];
+    [cocosGuy runAction: [CCMoveTo actionWithDuration:1 position:location]];
+}
+
+
 - (void) nextFrame:(ccTime)dt {
     seeker1.position = ccp(seeker1.position.x + 100*dt, seeker1.position.y);
     if (seeker1.position.x > 480+32) {
         seeker1.position = ccp(-32, seeker1.position.y);
     }
 }
+
+-(void) doSomethingOne: (CCMenuItem *) menuItem {
+    NSLog(@"The first menu was called");
+}
+
+-(void) doSomethingTwo: (CCMenuItem *) menuItem {
+    NSLog(@"The second menu was called");
+}
+
+-(void) doSomethingThree: (CCMenuItem *) menuItem {
+    NSLog(@"The third menu was called");
+}
+
 
 #pragma mark GameKit delegate
 
