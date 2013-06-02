@@ -10,6 +10,7 @@
 // Import the interfaces
 #import "HelloWorldLayer.h"
 #import "GameOverLayer.h"
+#import "Monster.h"
 
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
@@ -39,7 +40,12 @@
 }
 
 -(void) addMonster {
-    CCSprite *monster = [CCSprite spriteWithFile:@"monster.png"];
+    Monster * monster = nil;
+    if (arc4random() % 2 == 0)
+        monster = [[[WeakAndFastMonster alloc] init] autorelease];
+    else
+        monster = [[[StrongAndSlowMonster alloc] init] autorelease];
+    
     monster.tag = 1;
     [_monsters addObject:monster];
     
@@ -52,8 +58,8 @@
     monster.position = ccp(winSize.width + monster.contentSize.width/2, actualY);
     [self addChild:monster];
     
-    int minDuration = 2.0;
-    int maxDuration = 4.0;
+    int minDuration = monster.minMoveDuration;
+    int maxDuration = monster.maxMoveDuration;
     int rangeDuration = maxDuration - minDuration;
     int actualDuration = (arc4random() % rangeDuration) + minDuration;
     
@@ -168,14 +174,22 @@
 -(void)update:(ccTime)dt {
     NSMutableArray *projectilesToDelete = [[NSMutableArray alloc] init];
     for (CCSprite *projectile in _projectiles) {
+        
+        BOOL monsterHit = FALSE;
         NSMutableArray *monstersToDelete = [[NSMutableArray alloc] init];
-        for (CCSprite *monster in _monsters) {
-            if (CGRectIntersectsRect(projectile.boundingBox, monster.boundingBox))
-                [monstersToDelete addObject:monster];
+        for (Monster *monster in _monsters) {
+
+            if (CGRectIntersectsRect(projectile.boundingBox, monster.boundingBox)) {
+                monsterHit = TRUE;
+                monster.hp--;
+                if (monster.hp <= 0)
+                    [monstersToDelete addObject:monster];
+                break;
+            }
             
         }
         
-        for (CCSprite *monster in monstersToDelete) {
+        for (Monster *monster in monstersToDelete) {
             [_monsters removeObject:monster];
             [self removeChild:monster cleanup:YES];
             _monstersDestroyed++;
@@ -184,8 +198,10 @@
                 [[CCDirector sharedDirector] replaceScene:gameOverScene];
             }
         }
-        if (monstersToDelete.count > 0)
+        if (monsterHit) {
             [projectilesToDelete addObject:projectile];
+            [[SimpleAudioEngine sharedEngine] playEffect:@"explosion.caf"];
+        }
 
         [monstersToDelete release];
     }
