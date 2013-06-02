@@ -13,6 +13,8 @@
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
 
+#import "SimpleAudioEngine.h"
+
 #pragma mark - HelloWorldLayer
 
 // HelloWorldLayer implementation
@@ -79,6 +81,7 @@ NSMutableArray *_projectiles;
         [self schedule:@selector(update:)];
         _monsters = [[NSMutableArray alloc] init];
         _projectiles = [[NSMutableArray alloc] init];
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"background-music-aac.caf"];
 	}
 	return self;
 }
@@ -117,6 +120,7 @@ NSMutableArray *_projectiles;
     
     projectile.tag = 2;
     [_projectiles addObject:projectile];
+    [[SimpleAudioEngine sharedEngine] playEffect:@"pew-pew-lei.caf"];
     
     [self addChild:projectile];
     
