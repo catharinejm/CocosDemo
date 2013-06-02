@@ -1212,12 +1212,14 @@
 				GCC_PREFIX_HEADER = CocosDemo/Prefix.pch;
 				HEADER_SEARCH_PATHS = "\"CocosDemo/libs/kazmath/include\"";
 				INFOPLIST_FILE = CocosDemo/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3",
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1231,12 +1233,14 @@
 				GCC_PREFIX_HEADER = CocosDemo/Prefix.pch;
 				HEADER_SEARCH_PATHS = "\"CocosDemo/libs/kazmath/include\"";
 				INFOPLIST_FILE = CocosDemo/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3",
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
