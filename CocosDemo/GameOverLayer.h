@@ -6,7 +6,6 @@
 //  Copyright 2013 Jon Distad. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
 @interface GameOverLayer : CCLayerColor {
