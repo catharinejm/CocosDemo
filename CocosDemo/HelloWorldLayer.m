@@ -26,6 +26,7 @@
 	
 	// 'layer' is an autorelease object.
 	HelloWorldLayer *layer = [HelloWorldLayer node];
+    [layer setTouchEnabled:YES];
 	
 	// add layer as a child to scene
 	[scene addChild: layer];
@@ -73,10 +74,6 @@
 	return self;
 }
 
--(void) gameLogic: (ccTime)dt {
-    [self addMonster];
-}
-
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
 {
@@ -86,6 +83,44 @@
 	
 	// don't forget to call "super dealloc"
 	[super dealloc];
+}
+
+-(void) gameLogic: (ccTime)dt {
+    [self addMonster];
+}
+
+-(void) ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [self convertTouchToNodeSpace:touch];
+    
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    CCSprite *projectile = [CCSprite spriteWithFile:@"projectile.png"];
+    projectile.position = ccp(20, winSize.height/2);
+    
+    CGPoint offset = ccpSub(location, projectile.position);
+    
+    if (offset.x <= 0) return;
+    
+    [self addChild:projectile];
+    
+    int realX = winSize.width + (projectile.contentSize.width/2);
+    float ratio = (float) offset.y / (float) offset.x;
+    int realY = (realX * ratio) + projectile.position.y;
+    CGPoint realDest = ccp(realX, realY);
+    
+    int offRealX = realX - projectile.position.x;
+    int offRealY = realY - projectile.position.y;
+    float length = sqrtf((offRealX * offRealX) + (offRealY * offRealY));
+    float velocity = 480/1; // 480px / 1sec
+    float realMoveDuration = length/velocity;
+    
+    [projectile runAction:
+     [CCSequence actions:
+      [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
+      [CCCallBlockN actionWithBlock:^(CCNode *node) {
+         [node removeFromParentAndCleanup:YES];
+     }],
+      nil]];
 }
 
 #pragma mark GameKit delegate
