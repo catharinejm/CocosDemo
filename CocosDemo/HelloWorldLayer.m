@@ -21,9 +21,6 @@
 // HelloWorldLayer implementation
 @implementation HelloWorldLayer
 
-NSMutableArray *_monsters;
-NSMutableArray *_projectiles;
-
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
 +(CCScene *) scene
 {
@@ -77,9 +74,9 @@ NSMutableArray *_projectiles;
     // Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super initWithColor:ccc4(255, 255, 255, 255)]) ) {
         CGSize winSize = [CCDirector sharedDirector].winSize;
-        CCSprite *player = [CCSprite spriteWithFile:@"player2.png"];
-        player.position = ccp(player.contentSize.width/2, winSize.height/2);
-        [self addChild:player];
+        _player = [CCSprite spriteWithFile:@"player2.png"];
+        _player.position = ccp(_player.contentSize.width/2, winSize.height/2);
+        [self addChild:_player];
         [self schedule:@selector(gameLogic:) interval:1.0];
         [self schedule:@selector(update:)];
         _monsters = [[NSMutableArray alloc] init];
@@ -137,6 +134,11 @@ NSMutableArray *_projectiles;
     float length = sqrtf((offRealX * offRealX) + (offRealY * offRealY));
     float velocity = 480/1; // 480px / 1sec
     float realMoveDuration = length/velocity;
+    
+    float angleRadians = atanf((float)offRealY / (float)offRealX);
+    float angleDegrees = CC_RADIANS_TO_DEGREES(angleRadians);
+    float cocosAngle = -1 * angleDegrees;
+    _player.rotation = cocosAngle;
     
     [projectile runAction:
      [CCSequence actions:
