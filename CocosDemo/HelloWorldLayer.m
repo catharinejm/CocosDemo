@@ -107,30 +107,28 @@
 }
 
 -(void) ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    if (_nextProjectile != nil) return;
+    
     UITouch *touch = [touches anyObject];
     CGPoint location = [self convertTouchToNodeSpace:touch];
     
     CGSize winSize = [[CCDirector sharedDirector] winSize];
-    CCSprite *projectile = [CCSprite spriteWithFile:@"projectile2.png"];
-    projectile.position = ccp(20, winSize.height/2);
+
+    _nextProjectile = [[CCSprite spriteWithFile:@"projectile2.png"] retain];
+    _nextProjectile.position = ccp(20, winSize.height/2);
     
-    CGPoint offset = ccpSub(location, projectile.position);
+    CGPoint offset = ccpSub(location, _nextProjectile.position);
     
     if (offset.x <= 0) return;
     
-    projectile.tag = 2;
-    [_projectiles addObject:projectile];
-    [[SimpleAudioEngine sharedEngine] playEffect:@"pew-pew-lei.caf"];
-    
-    [self addChild:projectile];
-    
-    int realX = winSize.width + (projectile.contentSize.width/2);
+    int realX = winSize.width + (_nextProjectile.contentSize.width/2);
     float ratio = (float) offset.y / (float) offset.x;
-    int realY = (realX * ratio) + projectile.position.y;
+    int realY = (realX * ratio) + _nextProjectile.position.y;
     CGPoint realDest = ccp(realX, realY);
     
-    int offRealX = realX - projectile.position.x;
-    int offRealY = realY - projectile.position.y;
+    int offRealX = realX - _nextProjectile.position.x;
+    int offRealY = realY - _nextProjectile.position.y;
     float length = sqrtf((offRealX * offRealX) + (offRealY * offRealY));
     float velocity = 480/1; // 480px / 1sec
     float realMoveDuration = length/velocity;
@@ -138,9 +136,23 @@
     float angleRadians = atanf((float)offRealY / (float)offRealX);
     float angleDegrees = CC_RADIANS_TO_DEGREES(angleRadians);
     float cocosAngle = -1 * angleDegrees;
-    _player.rotation = cocosAngle;
+    float rotateDegreesPerSecond = 360;
+    float degreesDiff = _player.rotation - cocosAngle;
+    float rotateDuration = fabs(degreesDiff / rotateDegreesPerSecond);
     
-    [projectile runAction:
+    [_player runAction:
+     [CCSequence actions:
+      [CCRotateTo actionWithDuration:rotateDuration angle:cocosAngle],
+      [CCCallBlock actionWithBlock:^{
+         [self addChild:_nextProjectile];
+         [_projectiles addObject:_nextProjectile];
+         
+         [_nextProjectile release];
+         _nextProjectile = nil;
+     }],
+      nil]];
+    
+    [_nextProjectile runAction:
      [CCSequence actions:
       [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
       [CCCallBlockN actionWithBlock:^(CCNode *node) {
@@ -148,6 +160,9 @@
          [_projectiles removeObject:node];
      }],
       nil]];
+    
+    _nextProjectile.tag = 2;
+    [[SimpleAudioEngine sharedEngine] playEffect:@"pew-pew-lei.caf"];
 }
 
 -(void)update:(ccTime)dt {
