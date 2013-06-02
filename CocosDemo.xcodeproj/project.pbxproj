@@ -152,6 +152,7 @@
 		FCD7E848175BF4080034FAC9 /* Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD7E847175BF4080034FAC9 /* Monster.m */; };
 		FCD7E84B175BF6410034FAC9 /* monster2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD7E849175BF6410034FAC9 /* monster2-hd.png */; };
 		FCD7E84C175BF6410034FAC9 /* monster2.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD7E84A175BF6410034FAC9 /* monster2.png */; };
+		FCD7E850175BFA290034FAC9 /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD7E84F175BFA290034FAC9 /* Level.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -449,6 +450,8 @@
 		FCD7E849175BF6410034FAC9 /* monster2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "monster2-hd.png"; sourceTree = "<group>"; };
 		FCD7E84A175BF6410034FAC9 /* monster2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster2.png; sourceTree = "<group>"; };
 		FCD7E84D175BF64A0034FAC9 /* explosion.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosion.caf; sourceTree = "<group>"; };
+		FCD7E84E175BFA290034FAC9 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
+		FCD7E84F175BFA290034FAC9 /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -514,6 +517,8 @@
 				FC649BD9175B936B009B5AD1 /* HelloWorldLayer.h */,
 				FC649BDA175B936B009B5AD1 /* HelloWorldLayer.m */,
 				FCD7E846175BF4080034FAC9 /* Monster.h */,
+				FCD7E84E175BFA290034FAC9 /* Level.h */,
+				FCD7E84F175BFA290034FAC9 /* Level.m */,
 				FCD7E847175BF4080034FAC9 /* Monster.m */,
 				FC649BDC175B936B009B5AD1 /* IntroLayer.h */,
 				FC649BDD175B936B009B5AD1 /* IntroLayer.m */,
@@ -1128,6 +1133,7 @@
 				FC649BDE175B936B009B5AD1 /* IntroLayer.m in Sources */,
 				FC9E2F64175BD21300D90DBF /* GameOverLayer.m in Sources */,
 				FCD7E848175BF4080034FAC9 /* Monster.m in Sources */,
+				FCD7E850175BFA290034FAC9 /* Level.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
