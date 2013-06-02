@@ -18,6 +18,9 @@
 // HelloWorldLayer implementation
 @implementation HelloWorldLayer
 
+NSMutableArray *_monsters;
+NSMutableArray *_projectiles;
+
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
 +(CCScene *) scene
 {
@@ -37,6 +40,8 @@
 
 -(void) addMonster {
     CCSprite *monster = [CCSprite spriteWithFile:@"monster.png"];
+    monster.tag = 1;
+    [_monsters addObject:monster];
     
     CGSize winSize = [CCDirector sharedDirector].winSize;
     int minY = monster.contentSize.height/2;
@@ -55,6 +60,7 @@
     CCMoveTo *actionMove = [CCMoveTo actionWithDuration:actualDuration position:ccp(-monster.contentSize.width/2, actualY)];
     CCCallBlockN *actionMoveDone = [CCCallBlockN actionWithBlock:^(CCNode *node) {
         [node removeFromParentAndCleanup:YES];
+        [_monsters removeObject:node];
     }];
     [monster runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
 }
@@ -70,6 +76,8 @@
         player.position = ccp(player.contentSize.width/2, winSize.height/2);
         [self addChild:player];
         [self schedule:@selector(gameLogic:) interval:1.0];
+        _monsters = [[NSMutableArray alloc] init];
+        _projectiles = [[NSMutableArray alloc] init];
 	}
 	return self;
 }
@@ -80,6 +88,11 @@
 	// in case you have something to dealloc, do it in this method
 	// in this particular example nothing needs to be released.
 	// cocos2d will automatically release all the children (Label)
+    
+    [_monsters release];
+    _monsters = nil;
+    [_projectiles release];
+    _projectiles = nil;
 	
 	// don't forget to call "super dealloc"
 	[super dealloc];
@@ -101,6 +114,9 @@
     
     if (offset.x <= 0) return;
     
+    projectile.tag = 2;
+    [_projectiles addObject:projectile];
+    
     [self addChild:projectile];
     
     int realX = winSize.width + (projectile.contentSize.width/2);
@@ -119,6 +135,7 @@
       [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
       [CCCallBlockN actionWithBlock:^(CCNode *node) {
          [node removeFromParentAndCleanup:YES];
+         [_projectiles removeObject:node];
      }],
       nil]];
 }
