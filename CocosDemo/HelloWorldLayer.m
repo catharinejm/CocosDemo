@@ -77,7 +77,7 @@ NSMutableArray *_projectiles;
     // Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super initWithColor:ccc4(255, 255, 255, 255)]) ) {
         CGSize winSize = [CCDirector sharedDirector].winSize;
-        CCSprite *player = [CCSprite spriteWithFile:@"player.png"];
+        CCSprite *player = [CCSprite spriteWithFile:@"player2.png"];
         player.position = ccp(player.contentSize.width/2, winSize.height/2);
         [self addChild:player];
         [self schedule:@selector(gameLogic:) interval:1.0];
@@ -114,7 +114,7 @@ NSMutableArray *_projectiles;
     CGPoint location = [self convertTouchToNodeSpace:touch];
     
     CGSize winSize = [[CCDirector sharedDirector] winSize];
-    CCSprite *projectile = [CCSprite spriteWithFile:@"projectile.png"];
+    CCSprite *projectile = [CCSprite spriteWithFile:@"projectile2.png"];
     projectile.position = ccp(20, winSize.height/2);
     
     CGPoint offset = ccpSub(location, projectile.position);
