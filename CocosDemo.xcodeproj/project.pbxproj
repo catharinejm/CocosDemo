@@ -148,6 +148,7 @@
 		FC9E2F5F175BC46800D90DBF /* projectile.png in Resources */ = {isa = PBXBuildFile; fileRef = FC9E2F56175BC46800D90DBF /* projectile.png */; };
 		FC9E2F60175BC46800D90DBF /* background-music-aac.caf in Resources */ = {isa = PBXBuildFile; fileRef = FC9E2F58175BC46800D90DBF /* background-music-aac.caf */; };
 		FC9E2F61175BC46800D90DBF /* pew-pew-lei.caf in Resources */ = {isa = PBXBuildFile; fileRef = FC9E2F59175BC46800D90DBF /* pew-pew-lei.caf */; };
+		FC9E2F64175BD21300D90DBF /* GameOverLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9E2F63175BD21300D90DBF /* GameOverLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -438,6 +439,8 @@
 		FC9E2F56175BC46800D90DBF /* projectile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectile.png; sourceTree = "<group>"; };
 		FC9E2F58175BC46800D90DBF /* background-music-aac.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-music-aac.caf"; sourceTree = "<group>"; };
 		FC9E2F59175BC46800D90DBF /* pew-pew-lei.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pew-pew-lei.caf"; sourceTree = "<group>"; };
+		FC9E2F62175BD21300D90DBF /* GameOverLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverLayer.h; sourceTree = "<group>"; };
+		FC9E2F63175BD21300D90DBF /* GameOverLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -504,6 +507,8 @@
 				FC649BDA175B936B009B5AD1 /* HelloWorldLayer.m */,
 				FC649BDC175B936B009B5AD1 /* IntroLayer.h */,
 				FC649BDD175B936B009B5AD1 /* IntroLayer.m */,
+				FC9E2F62175BD21300D90DBF /* GameOverLayer.h */,
+				FC9E2F63175BD21300D90DBF /* GameOverLayer.m */,
 				FC649A49175B9369009B5AD1 /* Resources */,
 				FC649A61175B9369009B5AD1 /* libs */,
 				FC649BD2175B936B009B5AD1 /* Supporting Files */,
@@ -1106,6 +1111,7 @@
 				FC649BD8175B936B009B5AD1 /* AppDelegate.m in Sources */,
 				FC649BDB175B936B009B5AD1 /* HelloWorldLayer.m in Sources */,
 				FC649BDE175B936B009B5AD1 /* IntroLayer.m in Sources */,
+				FC9E2F64175BD21300D90DBF /* GameOverLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

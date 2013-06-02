@@ -15,6 +15,7 @@
 // HelloWorldLayer
 @interface HelloWorldLayer : CCLayerColor
 {
+    int _monstersDestroyed;
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child

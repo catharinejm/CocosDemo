@@ -9,6 +9,7 @@
 
 // Import the interfaces
 #import "HelloWorldLayer.h"
+#import "GameOverLayer.h"
 
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
@@ -63,6 +64,8 @@ NSMutableArray *_projectiles;
     CCCallBlockN *actionMoveDone = [CCCallBlockN actionWithBlock:^(CCNode *node) {
         [node removeFromParentAndCleanup:YES];
         [_monsters removeObject:node];
+        CCScene *gameOverScene = [GameOverLayer sceneWithWon:NO];
+        [[CCDirector sharedDirector] replaceScene:gameOverScene];
     }];
     [monster runAction:[CCSequence actions:actionMove, actionMoveDone, nil]];
 }
@@ -158,6 +161,11 @@ NSMutableArray *_projectiles;
         for (CCSprite *monster in monstersToDelete) {
             [_monsters removeObject:monster];
             [self removeChild:monster cleanup:YES];
+            _monstersDestroyed++;
+            if (_monstersDestroyed > 30) {
+                CCScene *gameOverScene = [GameOverLayer sceneWithWon:YES];
+                [[CCDirector sharedDirector] replaceScene:gameOverScene];
+            }
         }
         if (monstersToDelete.count > 0)
             [projectilesToDelete addObject:projectile];
