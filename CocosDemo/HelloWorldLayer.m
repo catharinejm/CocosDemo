@@ -9,6 +9,7 @@
 
 // Import the interfaces
 #import "HelloWorldLayer.h"
+#import "CCTouchDispatcher.h"
 
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
@@ -29,6 +30,8 @@ CCSprite *cocosGuy;
 	
 	// 'layer' is an autorelease object.
 	HelloWorldLayer *layer = [HelloWorldLayer node];
+    
+    [layer setTouchEnabled:YES];
 	
 	// add layer as a child to scene
 	[scene addChild: layer];
@@ -43,7 +46,7 @@ CCSprite *cocosGuy;
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) ) {
-		seeker1 = [CCSprite spriteWithFile: @"seeker.png"];
+        seeker1 = [CCSprite spriteWithFile: @"seeker.png"];
         seeker1.position = ccp(50, 100);
         [self addChild:seeker1];
         
@@ -55,6 +58,20 @@ CCSprite *cocosGuy;
         [self schedule:@selector(nextFrame:)];
 	}
 	return self;
+}
+
+-(void) registerWithTouchDispatcher {
+    [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+}
+
+-(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+    return YES;
+}
+
+-(void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+    CGPoint location = [self convertTouchToNodeSpace: touch];
+    [cocosGuy stopAllActions];
+    [cocosGuy runAction: [CCMoveTo actionWithDuration:1 position:location]];
 }
 
 // on "dealloc" you need to release all your retained objects
